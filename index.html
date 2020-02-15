@@ -2,7 +2,6 @@
 <html dir="ltr" lang="pt-BR">
 
 <head>
-
     <link rel='stylesheet' type='text/css' href='style.css'>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -17,11 +16,31 @@
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+
     <meta charset="UTF-8" />
     <title>Guilherme Storti</title>
+
+    <script>
+        $(function () {
+            $("#headerDiv").load("/.header.html");
+            $("#footerDiv").load("./footer.html");
+        });  
+    </script>
 </head>
 
-<h1 class="titulo-font">Hello World!</h1>
-<p class="titulo-font">\\gns</p>
-<img src="./src/img/logo_gns.png">
-<img src="./src/img/logo_gns_v2.png">
+<body>
+    <div id="headerDiv">
+    </div>
+
+    <h1 class="titulo-font">Hello World!</h1>
+    <p class="titulo-font">\\gns</p>
+    <img src="./src/img/logo_gns.png">
+    <img src="./src/img/logo_gns_v2.png">
+
+    <div id="footerDiv"></div>
+</body>
+
+</html>
