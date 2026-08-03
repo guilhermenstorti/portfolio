@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-surface text-ink font-sans;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .case-card {
+    transition:
+      box-shadow 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .case-card:hover {
+    border-color: var(--card-accent-color);
+    box-shadow:
+      0 10px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+}
