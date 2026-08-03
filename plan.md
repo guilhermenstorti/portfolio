@@ -68,31 +68,74 @@ O líder precisa sair convencido em 5-7 minutos.
 
 ## Estrutura de arquivos
 
-O projeto deve ser feito em React, typescript e tailwindcss, estruturado em single-page application. Após seu desenvolvimento, será feito deploy em github pages.
+O projeto deve ser feito em React, TypeScript e Tailwind CSS (Vite), estruturado como single-page application com roteamento client-side (React Router). Após seu desenvolvimento, será feito deploy no GitHub Pages.
+
+**Nomenclatura:** todo identificador de código — pastas, arquivos, componentes, rotas — é em inglês, seguindo `.agents/rules/code-standards.md` (camelCase para funções/variáveis, PascalCase para componentes/tipos, kebab-case para arquivos/pastas). O conteúdo/copy exibido ao usuário permanece em português — isso é texto de produto, não identificador de código.
+
+**Assets estáticos:** ficam em `public/`, fora de `src/`. São arquivos consumidos por URL direta e sem transformação pelo bundler (imagens de terceiros, PDF do CV), então não fazem sentido em `src/assets` (que é para assets processados/importados pelo bundler). O Vite copia `public/` para a raiz do build, preservando os caminhos.
+
+**Roteamento no GitHub Pages:** usar `HashRouter` do React Router. O GitHub Pages é um host estático sem rewrite de servidor; com `HashRouter`, a navegação e o F5 em qualquer rota (`/#/cases/mogno-ai`) sempre resolvem para o mesmo `index.html`, sem precisar do hack de `404.html` de redirecionamento que o `BrowserRouter` exigiria.
 
 ```
 /
-├── index.html                    (Homepage — 6 seções)
-├── caso-mogno-ai.html            (Case Mogno AI)
-├── caso-accountfy-ai.html        (Case Accountfy AI & Analytics)
-├── caso-accountfy-fpa.html       (Case Accountfy FP&A)
-├── caso-euphoria-bi.html         (Case Euphoria BI)
-├── 404.html                      (Página de erro)
-└── assets/
-    ├── img/
-    │   ├── logos/                 (Logos dos clientes em SVG/PNG)
-    │   │   ├── willbank.svg
-    │   │   ├── dotz.svg
-    │   │   ├── zup.svg
-    │   │   ├── griclub.svg
-    │   │   ├── grupo-salta.svg
-    │   │   └── atlantic-city.svg
-    │   └── capterra/             (Selos Capterra)
-    │       ├── ease-of-use-2025.svg
-    │       └── best-value-2025.svg
-    └── docs/
-        └── guilherme-navakoski-cv.pdf
+├── index.html                       # entry point do Vite (shell da SPA)
+├── vite.config.ts
+├── tsconfig.json
+├── public/
+│   └── assets/
+│       ├── img/
+│       │   ├── logos/                # logos dos clientes (SVG/PNG)
+│       │   │   ├── will-bank.svg
+│       │   │   ├── dotz.svg
+│       │   │   ├── zup.svg
+│       │   │   ├── gri-club.svg
+│       │   │   ├── grupo-salta.svg
+│       │   │   └── atlantic-city.svg
+│       │   └── capterra/             # selos Capterra
+│       │       ├── ease-of-use-2025.svg
+│       │       └── best-value-2025.svg
+│       └── docs/
+│           └── guilherme-storti-cv.pdf
+└── src/
+    ├── main.tsx
+    ├── index.css
+    ├── app/
+    │   ├── app.tsx                    # providers + montagem do router
+    │   └── router.tsx                 # tabela de rotas (HashRouter)
+    ├── pages/                         # telas montadas por rota (compõem features)
+    │   ├── home-page.tsx
+    │   ├── mogno-ai-case-page.tsx
+    │   ├── accountfy-ai-analytics-case-page.tsx
+    │   ├── accountfy-fpa-case-page.tsx
+    │   ├── euphoria-bi-case-page.tsx
+    │   └── not-found-page.tsx
+    ├── features/                      # UI e lógica por domínio de produto
+    │   ├── hero/
+    │   ├── quick-scan/
+    │   ├── companies-served/
+    │   ├── case-cards/
+    │   ├── about/
+    │   ├── final-cta/
+    │   └── case-study/                # blocos reutilizados pelas páginas de case
+    ├── components/
+    │   ├── ui/                        # primitivos do design system (Badge, Tag, Button…)
+    │   ├── header.tsx
+    │   └── footer.tsx
+    ├── hooks/                         # hooks globais reutilizáveis
+    ├── lib/                           # helpers genéricos
+    └── types/                         # tipos globais compartilhados
 ```
+
+## Tabela de rotas
+
+| Rota                                | Página                                        |
+|--------------------------------------|------------------------------------------------|
+| `/`                                   | `home-page.tsx`                                |
+| `/cases/mogno-ai`                     | `mogno-ai-case-page.tsx`                       |
+| `/cases/accountfy-ai-analytics`       | `accountfy-ai-analytics-case-page.tsx`         |
+| `/cases/accountfy-fpa`                | `accountfy-fpa-case-page.tsx`                  |
+| `/cases/euphoria-bi`                  | `euphoria-bi-case-page.tsx`                    |
+| `*` (catch-all)                       | `not-found-page.tsx`                           |
 
 ## Navegação
 
@@ -105,7 +148,7 @@ Logo (GN) → links: Cases | Sobre | [Botão: Conversar]
 - "Conversar" abre link do Calendar (booking time) em nova aba
 
 **Páginas de case:**
-Header: Logo (GN) → link: ← Voltar (volta para index.html)
+Header: Logo (GN) → link: ← Voltar (navega para a rota `/`)
 CTA no final de cada case.
 
 ---
@@ -185,7 +228,7 @@ Telefone:   +55 44 99990-5592
 Agendar chamada:   https://calendar.app.google/BKeoRpgz5FATNNQKA
 GitHub:     https://github.com/guilhermenstorti
 Substack:   https://onproductpath.substack.com
-CV PDF:     assets/docs/guilherme-navakoski-cv.pdf
+CV PDF:     public/assets/docs/guilherme-storti-cv.pdf
 ```
 
 ---
@@ -332,7 +375,7 @@ Label: RESULTADO
 Valor: Produto lançado e validado ✅ · 54% User Activation Rate
 
 **Link:** Ler o case completo →
-**Destino:** caso-mogno-ai.html
+**Destino:** /cases/mogno-ai
 
 ---
 
@@ -351,7 +394,7 @@ Label: RESULTADO
 Valor: +11% revenue/mês · -22% tickets de suporte
 
 **Link:** Ler o case completo →
-**Destino:** caso-accountfy-ai.html
+**Destino:** /cases/accountfy-ai-analytics
 
 ---
 
@@ -370,7 +413,7 @@ Label: RESULTADO
 Valor: -5pp churn mensal · -85% tempo de onboarding · +3~5% receita de upsell/mês
 
 **Link:** Ler o case completo →
-**Destino:** caso-accountfy-fpa.html
+**Destino:** /cases/accountfy-fpa
 
 ---
 
@@ -389,7 +432,7 @@ Label: RESULTADO
 Valor: -32,5% inadimplência financeira
 
 **Link:** Ler o case completo →
-**Destino:** caso-euphoria-bi.html
+**Destino:** /cases/euphoria-bi
 
 ---
 
@@ -515,7 +558,7 @@ Texto centralizado, branco. Botões brancos.
 
 # 11. PÁGINA DE CASE: MOGNO AI
 
-## Arquivo: caso-mogno-ai.html
+## Rota: /cases/mogno-ai — src/pages/mogno-ai-case-page.tsx
 ## Cor do hero: #8b5cf6 → #6d28d9 (roxo)
 
 ---
@@ -653,7 +696,7 @@ Se quiser ir mais fundo em metodologia, decisões ou learnings,
 
 # 12. PÁGINA DE CASE: ACCOUNTFY AI & ANALYTICS
 
-## Arquivo: caso-accountfy-ai.html
+## Rota: /cases/accountfy-ai-analytics — src/pages/accountfy-ai-analytics-case-page.tsx
 ## Cor do hero: #8b5cf6 → #a78bfa (roxo claro)
 
 ---
@@ -766,7 +809,7 @@ Se quiser ir mais fundo em metodologia, decisões ou learnings,
 
 # 13. PÁGINA DE CASE: ACCOUNTFY FP&A
 
-## Arquivo: caso-accountfy-fpa.html
+## Rota: /cases/accountfy-fpa — src/pages/accountfy-fpa-case-page.tsx
 ## Cor do hero: #10b981 → #059669 (verde)
 
 ---
@@ -854,7 +897,7 @@ um pilar da oferta.
   de usuários. O produto também recebeu o selo Best Value 2025.
 
 Implementação: exibir os selos Capterra como imagens ao lado 
-dos resultados (arquivos em assets/img/capterra/).
+dos resultados (arquivos em public/assets/img/capterra/).
 
 ---
 
@@ -887,7 +930,7 @@ Se quiser ir mais fundo em metodologia, decisões ou learnings,
 
 # 14. PÁGINA DE CASE: EUPHORIA BI
 
-## Arquivo: caso-euphoria-bi.html
+## Rota: /cases/euphoria-bi — src/pages/euphoria-bi-case-page.tsx
 ## Cor do hero: #3b82f6 → #1e40af (azul)
 
 ---
@@ -1014,7 +1057,7 @@ Logo (GN) | Cases | Sobre | [Botão: Conversar]
 **Páginas de case:**
 Logo (GN) | ← Voltar
 
-Comportamento: Logo sempre linka para index.html.
+Comportamento: Logo sempre linka para a rota `/`.
 "Conversar" abre Calendar (booking time) em nova aba.
 
 ---
@@ -1030,7 +1073,7 @@ Comportamento: Logo sempre linka para index.html.
 
 ## Página 404
 
-**Arquivo:** 404.html
+**Rota:** `*` (catch-all) — src/pages/not-found-page.tsx
 
 **Texto:**
 > Nem toda feature vai para produção.
@@ -1039,7 +1082,7 @@ Comportamento: Logo sempre linka para index.html.
 > [Voltar pro portfólio] ou [me mandar uma mensagem].
 
 **Implementação:** Fundo branco, texto centralizado, tom leve, GIF animado.
-Redireciona para index.html no botão principal.
+Botão principal navega para a rota `/` via React Router (sem reload de página).
 
 ---
 
