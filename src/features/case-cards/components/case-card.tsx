@@ -14,6 +14,8 @@ export const CaseCard = ({ data }: CaseCardProps) => (
     <p className="text-sm font-medium text-muted">{data.subtitle}</p>
     <p className="text-muted">{data.description}</p>
     <ResultHighlight label="RESULTADO" value={data.resultValue} />
-    <RouteButton to={data.linkTo} label="Ler o case completo →" variant="secondary" />
+    <div className="mt-auto">
+      <RouteButton to={data.linkTo} label="Ler o case completo →" variant="secondary" />
+    </div>
   </article>
 );
