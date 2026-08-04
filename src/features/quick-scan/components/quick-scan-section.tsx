@@ -6,6 +6,7 @@ import { ChevronsUpIcon, LaunchingRocketIcon } from "@/components/ui/icons";
 interface TextField {
   readonly label: string;
   readonly value: string;
+  readonly fullWidth?: boolean;
 }
 
 const TEXT_FIELDS: readonly TextField[] = [
@@ -31,13 +32,14 @@ const TEXT_FIELDS: readonly TextField[] = [
   },
   { label: "Idiomas", value: "Português (nativo) · Inglês (fluente)" },
   {
+    label: "Disponibilidade",
+    value: "Aberto a oportunidades · Remoto ou híbrido.",
+  },
+  {
     label: "Diferencial técnico",
     value:
       "Background em desenvolvimento de software (ADVPL/Protheus, HTML, CSS, JavaScript, SQL, REST API), construção de ETL e Data Warehouses, e fluência em arquiteturas de IA/LLM. Falo a mesma língua do time de engenharia.",
-  },
-  {
-    label: "Disponibilidade",
-    value: "Aberto a oportunidades · Remoto ou híbrido.",
+    fullWidth: true,
   },
 ];
 
@@ -72,7 +74,11 @@ export const QuickScanSection = () => (
 
       <div className="mt-8 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-3">
         {TEXT_FIELDS.map((field) => (
-          <QuickScanField key={field.label} label={field.label}>
+          <QuickScanField
+            key={field.label}
+            label={field.label}
+            className={field.fullWidth ? "sm:col-span-3" : undefined}
+          >
             {field.value}
           </QuickScanField>
         ))}
