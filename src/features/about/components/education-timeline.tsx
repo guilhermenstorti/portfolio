@@ -60,9 +60,9 @@ export const EducationTimeline = () => (
           </p>
           <div className="mt-2 flex items-center gap-3">
             <img
-              src={`/portfolio/assets/img/logos/education/${milestone.logoSlug}.svg`}
+              src={`/portfolio/assets/img/logos/education/${milestone.logoSlug}.png`}
               alt={milestone.institution}
-              className="h-9 w-9 shrink-0 rounded border border-border-soft object-contain"
+              className="h-9 w-9 shrink-0 rounded object-contain"
             />
             <div>
               <p className="font-semibold text-foreground">{milestone.title}</p>
