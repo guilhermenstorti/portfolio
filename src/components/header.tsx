@@ -7,26 +7,32 @@ interface HeaderProps {
   readonly variant: "home" | "case";
 }
 
-const NAV_LINK_CLASSES = "text-sm font-medium text-ink hover:text-primary";
+const NAV_LINK_CLASSES = "text-sm font-medium text-muted hover:text-accent";
 
 const HomeNav = () => (
   <nav className="flex items-center gap-6">
     <AnchorScrollLink targetId="cases" label="Cases" className={NAV_LINK_CLASSES} />
     <AnchorScrollLink targetId="about" label="Sobre" className={NAV_LINK_CLASSES} />
-    <Button href={CONTACT_LINKS.scheduleCall} label="Conversar" variant="primary" target="_blank" />
+    <Button
+      href={CONTACT_LINKS.scheduleCall}
+      label="Conversar"
+      variant="primary"
+      size="nav"
+      target="_blank"
+    />
   </nav>
 );
 
 const CaseNav = () => (
-  <Link to="/" className="text-sm font-medium text-ink hover:text-primary">
+  <Link to="/" className={NAV_LINK_CLASSES}>
     ← Voltar
   </Link>
 );
 
 export const Header = ({ variant }: HeaderProps) => (
-  <header className="sticky top-0 z-50 border-b border-border bg-white/95 shadow-sm backdrop-blur">
-    <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <Link to="/" className="text-xl font-bold text-primary">
+  <header className="sticky top-0 z-50 border-b border-border-soft bg-nav backdrop-blur">
+    <div className="mx-auto flex max-w-content items-center justify-between px-12 py-4">
+      <Link to="/" className="font-heading text-xl font-semibold text-foreground">
         GN
       </Link>
       {variant === "home" ? <HomeNav /> : <CaseNav />}

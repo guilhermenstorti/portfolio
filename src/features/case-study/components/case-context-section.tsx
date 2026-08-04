@@ -3,10 +3,10 @@ interface CaseContextSectionProps {
 }
 
 export const CaseContextSection = ({ paragraphs }: CaseContextSectionProps) => (
-  <section className="bg-white px-6 py-16">
+  <section className="px-12 py-16">
     <div className="mx-auto max-w-[700px]">
-      <h2 className="text-2xl font-bold text-ink">Contexto</h2>
-      <div className="mt-4 space-y-4 text-ink-light">
+      <h2 className="text-2xl text-foreground">Contexto</h2>
+      <div className="mt-4 space-y-4 text-muted">
         {paragraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}

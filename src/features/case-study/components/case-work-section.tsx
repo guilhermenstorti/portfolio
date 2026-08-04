@@ -5,14 +5,14 @@ interface CaseWorkSectionProps {
 }
 
 export const CaseWorkSection = ({ blocks }: CaseWorkSectionProps) => (
-  <section className="bg-white px-6 py-16">
+  <section className="px-12 py-16">
     <div className="mx-auto max-w-[700px]">
-      <h2 className="text-2xl font-bold text-ink">O Que Eu Fiz</h2>
+      <h2 className="text-2xl text-foreground">O Que Eu Fiz</h2>
       <div className="mt-6 space-y-8">
         {blocks.map((block) => (
           <div key={block.subheading}>
-            <h3 className="font-bold text-ink">{block.subheading}</h3>
-            <div className="mt-2 space-y-3 text-ink-light">
+            <h3 className="font-semibold text-foreground">{block.subheading}</h3>
+            <div className="mt-2 space-y-3 text-muted">
               {block.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}

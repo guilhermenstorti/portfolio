@@ -8,15 +8,15 @@ const FOOTER_LINKS = [
 ];
 
 export const Footer = () => (
-  <footer className="bg-ink px-6 py-10 text-center text-white">
+  <footer className="border-t border-border-soft px-12 py-10 text-center">
     <nav className="flex flex-wrap justify-center gap-6">
       {FOOTER_LINKS.map((link) => (
-        <a key={link.label} href={link.href} className="text-sm hover:text-white/70">
+        <a key={link.label} href={link.href} className="text-sm text-muted hover:text-accent">
           {link.label}
         </a>
       ))}
     </nav>
-    <p className="mt-6 text-sm text-gray-400">
+    <p className="mt-6 text-sm text-dim">
       © 2025 Guilherme Storti. Feito com café e obsessão por produto.
     </p>
   </footer>

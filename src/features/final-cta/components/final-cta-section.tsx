@@ -10,9 +10,9 @@ export const FinalCtaSection = () => (
     <Button
       href={CONTACT_LINKS.scheduleCall}
       label="📅 Agendar uma conversa de 15 min"
-      variant="outline"
+      variant="primary"
       target="_blank"
     />
-    <Button href={MAILTO_EMAIL_LINK} label="✉️ Me mandar um email" variant="outline" />
+    <Button href={MAILTO_EMAIL_LINK} label="✉️ Me mandar um email" variant="secondary" />
   </CtaSection>
 );

@@ -5,7 +5,7 @@ interface InsightBoxProps {
 }
 
 export const InsightBox = ({ children }: InsightBoxProps) => (
-  <div className="rounded-r-lg border-l-4 border-highlight bg-surface px-5 py-4 text-ink">
+  <div className="rounded-r-lg border-l-4 border-warn bg-card px-5 py-4 text-foreground">
     {children}
   </div>
 );

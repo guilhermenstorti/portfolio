@@ -9,8 +9,8 @@ export const QuickScanActions = () => (
       variant="primary"
       target="_blank"
     />
-    <Button href={CONTACT_LINKS.cvPdf} label="Baixar CV em PDF" variant="outline" target="_blank" />
-    <Button href={CONTACT_LINKS.linkedin} label="LinkedIn" variant="outline" target="_blank" />
-    <Button href={MAILTO_EMAIL_LINK} label="Email direto" variant="outline" />
+    <Button href={CONTACT_LINKS.cvPdf} label="Baixar CV em PDF" variant="secondary" target="_blank" />
+    <Button href={CONTACT_LINKS.linkedin} label="LinkedIn" variant="secondary" target="_blank" />
+    <Button href={MAILTO_EMAIL_LINK} label="Email direto" variant="secondary" />
   </div>
 );

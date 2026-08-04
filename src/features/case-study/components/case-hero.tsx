@@ -13,7 +13,7 @@ interface MetadataItemProps {
 
 const MetadataItem = ({ label, value }: MetadataItemProps) => (
   <div>
-    <dt className="text-xs uppercase tracking-wide text-white/70">{label}</dt>
+    <dt className="font-mono text-xs uppercase tracking-wide text-white/70">{label}</dt>
     <dd className="mt-1 font-semibold">{value}</dd>
   </div>
 );
@@ -26,7 +26,7 @@ export const CaseHero = ({ data }: CaseHeroProps) => {
   return (
     <section style={gradientStyle} className="px-6 py-20 text-center text-white">
       <div className="mx-auto max-w-3xl">
-        <Badge label={`${data.badgeEmoji} ${data.badgeLabel}`} color="rgba(255,255,255,0.2)" />
+        <Badge label={`${data.badgeEmoji} ${data.badgeLabel}`} variant="hero" />
         <h1 className="mt-4 text-4xl font-bold sm:text-5xl">{data.title}</h1>
         <p className="mx-auto mt-4 max-w-2xl text-white/90">{data.subtitle}</p>
         <dl className="mx-auto mt-10 grid grid-cols-2 gap-4 rounded-lg bg-white/10 p-6 text-left backdrop-blur sm:grid-cols-4">

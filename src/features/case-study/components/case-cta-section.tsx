@@ -10,9 +10,9 @@ export const CaseCtaSection = () => (
     <Button
       href={CONTACT_LINKS.scheduleCall}
       label="Agendar conversa"
-      variant="outline"
+      variant="primary"
       target="_blank"
     />
-    <Button href={MAILTO_EMAIL_LINK} label="Enviar email" variant="outline" />
+    <Button href={MAILTO_EMAIL_LINK} label="Enviar email" variant="secondary" />
   </CtaSection>
 );

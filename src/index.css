@@ -2,8 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: oklch(16% 0.012 250);
+  --nav-bg: oklch(16% 0.012 250 / 0.85);
+  --text: oklch(92% 0.006 250);
+  --text-muted: oklch(72% 0.012 250);
+  --text-dim: oklch(62% 0.01 250);
+  --text-faint: oklch(65% 0.01 250);
+  --border: oklch(30% 0.015 250);
+  --border-soft: oklch(28% 0.015 250);
+  --border-strong: oklch(38% 0.02 250);
+  --accent: oklch(75% 0.11 250);
+  --warn: oklch(75% 0.13 70);
+  --btn-bg: oklch(92% 0.006 250);
+  --btn-bg-hover: oklch(85% 0.01 250);
+  --btn-text: oklch(16% 0.012 250);
+  --contrast-bg: oklch(26% 0.016 250);
+  --contrast-text: oklch(94% 0.006 250);
+  --contrast-text-muted: oklch(80% 0.012 250);
+  --contrast-text-dim: oklch(70% 0.015 250);
+  --green: oklch(80% 0.13 150);
+  --green-result: oklch(78% 0.12 150);
+  --card-bg: oklch(20% 0.014 250);
+  --card-hover-border: oklch(75% 0.11 250);
+  --badge-bg: oklch(75% 0.11 250 / 0.14);
+  --badge-text: oklch(80% 0.12 250);
+  --company-text: oklch(78% 0.012 250);
+  --company-hover-border: oklch(50% 0.02 250);
+}
+
 body {
-  @apply bg-surface text-ink font-sans;
+  @apply bg-background text-foreground font-sans;
 }
 
 @layer base {
@@ -22,9 +51,7 @@ body {
   }
 
   .case-card:hover {
-    border-color: var(--card-accent-color);
-    box-shadow:
-      0 10px 25px -5px rgb(0 0 0 / 0.1),
-      0 8px 10px -6px rgb(0 0 0 / 0.1);
+    border-color: var(--card-hover-border);
+    box-shadow: 0 2px 12px oklch(0% 0 0 / 0.16);
   }
 }

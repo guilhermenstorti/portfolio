@@ -7,9 +7,11 @@ interface CtaSectionProps {
 }
 
 export const CtaSection = ({ title, text, children }: CtaSectionProps) => (
-  <section className="bg-gradient-to-br from-primary to-accent px-6 py-16 text-center text-white">
-    <h2 className="text-3xl font-bold">{title}</h2>
-    <p className="mx-auto mt-4 max-w-xl text-blue-100">{text}</p>
-    <div className="mt-8 flex flex-wrap justify-center gap-4">{children}</div>
+  <section className="px-12 py-16 text-center">
+    <div className="mx-auto max-w-content rounded-card bg-contrast px-6 py-16">
+      <h2 className="text-3xl text-contrast-foreground">{title}</h2>
+      <p className="mx-auto mt-4 max-w-xl text-contrast-muted">{text}</p>
+      <div className="mt-8 flex flex-wrap justify-center gap-4">{children}</div>
+    </div>
   </section>
 );

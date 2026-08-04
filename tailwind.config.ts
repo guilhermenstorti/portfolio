@@ -5,22 +5,44 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: "#0f172a",
-          light: "#334155",
+        background: "var(--bg)",
+        nav: "var(--nav-bg)",
+        foreground: "var(--text)",
+        muted: "var(--text-muted)",
+        dim: "var(--text-dim)",
+        faint: "var(--text-faint)",
+        border: {
+          DEFAULT: "var(--border)",
+          soft: "var(--border-soft)",
+          strong: "var(--border-strong)",
         },
-        accent: {
-          DEFAULT: "#0369a1",
-          hover: "#075985",
+        accent: "var(--accent)",
+        warn: "var(--warn)",
+        btn: {
+          DEFAULT: "var(--btn-bg)",
+          hover: "var(--btn-bg-hover)",
+          foreground: "var(--btn-text)",
         },
-        highlight: "#d97706",
-        success: "#10b981",
-        surface: "#f8fafc",
-        ink: {
-          DEFAULT: "#0f172a",
-          light: "#64748b",
+        contrast: {
+          DEFAULT: "var(--contrast-bg)",
+          foreground: "var(--contrast-text)",
+          muted: "var(--contrast-text-muted)",
+          dim: "var(--contrast-text-dim)",
         },
-        border: "#e2e8f0",
+        green: "var(--green)",
+        "green-result": "var(--green-result)",
+        card: {
+          DEFAULT: "var(--card-bg)",
+          "hover-border": "var(--card-hover-border)",
+        },
+        badge: {
+          DEFAULT: "var(--badge-bg)",
+          foreground: "var(--badge-text)",
+        },
+        company: {
+          text: "var(--company-text)",
+          "hover-border": "var(--company-hover-border)",
+        },
         case: {
           "mogno-start": "#8b5cf6",
           "mogno-end": "#6d28d9",
@@ -33,8 +55,16 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["DM Sans", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        sans: ["IBM Plex Sans", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
         heading: ["Space Grotesk", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        mono: ["IBM Plex Mono", "ui-monospace", "monospace"],
+      },
+      maxWidth: {
+        content: "1160px",
+      },
+      borderRadius: {
+        btn: "3px",
+        card: "4px",
       },
       screens: {
         tablet: "768px",

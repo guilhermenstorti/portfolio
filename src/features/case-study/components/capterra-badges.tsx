@@ -15,7 +15,7 @@ const CAPTERRA_BADGES: readonly CapterraBadge[] = [
 ];
 
 export const CapterraBadges = () => (
-  <div className="mx-auto max-w-[700px] px-6">
+  <div className="mx-auto max-w-[700px] px-12">
     <div className="flex gap-4">
       {CAPTERRA_BADGES.map((badge) => (
         <img key={badge.src} src={badge.src} alt={badge.alt} className="h-16 w-auto" />

@@ -65,7 +65,7 @@ export const ExpertiseTags = () => (
   <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
     {EXPERTISE_CATEGORIES.map((group) => (
       <div key={group.category}>
-        <p className="font-bold text-ink">{group.category}</p>
+        <p className="font-mono text-xs uppercase tracking-wide text-dim">{group.category}</p>
         <div className="mt-3 flex flex-wrap gap-2">
           {group.skills.map((skill) => (
             <Tag key={skill} label={skill} />

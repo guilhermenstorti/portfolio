@@ -3,7 +3,6 @@ import type { CaseCardData } from "@/features/case-cards/types";
 export const CASE_CARDS: readonly CaseCardData[] = [
   {
     badgeLabel: "AI & Plataforma",
-    badgeColor: "#8b5cf6",
     title: "Mogno AI — Do Zero ao Lançamento Global",
     subtitle: "PM Senior · Out 2025 – Jul 2026",
     description:
@@ -13,7 +12,6 @@ export const CASE_CARDS: readonly CaseCardData[] = [
   },
   {
     badgeLabel: "Growth & AI",
-    badgeColor: "#10b981",
     title: "Accountfy: De Chatbots Básicos a IA que Gera Receita",
     subtitle: "Product Manager · Jan 2025 – Out 2025",
     description:
@@ -23,7 +21,6 @@ export const CASE_CARDS: readonly CaseCardData[] = [
   },
   {
     badgeLabel: "Estratégia & Retenção",
-    badgeColor: "#10b981",
     title: "Accountfy: Redesign que Transformou o Portfólio",
     subtitle: "Product Manager / PO · Jul 2022 – Jan 2024",
     description:
@@ -34,7 +31,6 @@ export const CASE_CARDS: readonly CaseCardData[] = [
   },
   {
     badgeLabel: "Dados & Fundação",
-    badgeColor: "#3b82f6",
     title: "Euphoria — Quando BI Vira Função Estratégica",
     subtitle: "BI Analyst · Abr 2019 – Dez 2020",
     description:

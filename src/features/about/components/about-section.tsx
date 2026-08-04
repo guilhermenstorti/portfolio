@@ -11,10 +11,10 @@ const MAIN_PARAGRAPHS: readonly string[] = [
 ];
 
 export const AboutSection = () => (
-  <section id="about" className="bg-surface px-6 py-16">
+  <section id="about" className="px-12 py-16">
     <div className="mx-auto max-w-[700px]">
-      <h2 className="text-3xl font-bold text-ink">Quem sou eu</h2>
-      <div className="mt-6 space-y-4 text-ink-light">
+      <h2 className="text-3xl text-foreground">Quem sou eu</h2>
+      <div className="mt-6 space-y-4 text-muted">
         {MAIN_PARAGRAPHS.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
@@ -32,7 +32,7 @@ export const AboutSection = () => (
         </InsightBox>
       </div>
 
-      <p className="mt-8 text-ink-light">
+      <p className="mt-8 text-muted">
         Fora de produto: mentor de startups early-stage na Evoa,
         co-organizador do Accountfy Product Talk, palestrante nos meetups
         DevParaná e Maringá PowerBI, e escrevo sobre product management no The

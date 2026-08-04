@@ -1,6 +1,5 @@
 export interface CaseCardData {
   readonly badgeLabel: string;
-  readonly badgeColor: string;
   readonly title: string;
   readonly subtitle: string;
   readonly description: string;

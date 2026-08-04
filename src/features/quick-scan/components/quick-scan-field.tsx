@@ -6,8 +6,8 @@ interface QuickScanFieldProps {
 }
 
 export const QuickScanField = ({ label, children }: QuickScanFieldProps) => (
-  <div>
-    <p className="font-bold text-ink">{label}</p>
-    <p className="mt-1 text-ink-light">{children}</p>
+  <div className="bg-background p-6">
+    <p className="font-mono text-xs uppercase tracking-wide text-dim">{label}</p>
+    <p className="mt-2 text-muted">{children}</p>
   </div>
 );
