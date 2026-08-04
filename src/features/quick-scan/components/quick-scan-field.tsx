@@ -11,7 +11,7 @@ export const QuickScanField = ({
   children,
   className,
 }: QuickScanFieldProps) => (
-  <div className={`bg-background p-6 ${className ?? ""}`}>
+  <div className={`p-6 ${className ?? "bg-background"}`}>
     <p className="font-mono text-xs uppercase tracking-wide text-dim">{label}</p>
     <p className="mt-2 text-muted">{children}</p>
   </div>

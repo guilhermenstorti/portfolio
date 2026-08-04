@@ -77,7 +77,11 @@ export const QuickScanSection = () => (
           <QuickScanField
             key={field.label}
             label={field.label}
-            className={field.fullWidth ? "sm:col-span-3" : undefined}
+            className={
+              field.fullWidth
+                ? "border-l-4 border-accent bg-card sm:col-span-3"
+                : undefined
+            }
           >
             {field.value}
           </QuickScanField>
