@@ -1,6 +1,7 @@
 import { QuickScanField } from "@/features/quick-scan/components/quick-scan-field";
 import { QuickScanActions } from "@/features/quick-scan/components/quick-scan-actions";
 import { StatPanel } from "@/components/ui/stat-panel";
+import { ChevronsUpIcon, LaunchingRocketIcon } from "@/components/ui/icons";
 
 interface TextField {
   readonly label: string;
@@ -40,13 +41,23 @@ const TEXT_FIELDS: readonly TextField[] = [
   },
 ];
 
+const withTrend = (value: string) => (
+  <span className="inline-flex items-center gap-1.5">
+    {value}
+    <ChevronsUpIcon className="h-3.5 w-3.5 text-green opacity-90" />
+  </span>
+);
+
 const RESULT_STATS = [
-  { value: "🚀", label: "Produto de IA lançado do zero (Google for Startups)" },
-  { value: "+11%", label: "Revenue via upsell / mês" },
-  { value: "-22%", label: "Tickets de suporte / mês" },
-  { value: "-5pp", label: "Churn mensal" },
-  { value: "-32,5%", label: "Inadimplência durante a pandemia" },
-  { value: "-85%", label: "Tempo de onboarding" },
+  {
+    value: <LaunchingRocketIcon className="h-8 w-8 text-green" />,
+    label: "Produto de IA lançado do zero (Google for Startups)",
+  },
+  { value: withTrend("+11%"), label: "Revenue via upsell / mês" },
+  { value: withTrend("-22%"), label: "Tickets de suporte / mês" },
+  { value: withTrend("-5pp"), label: "Churn mensal" },
+  { value: withTrend("-32,5%"), label: "Inadimplência durante a pandemia" },
+  { value: withTrend("-85%"), label: "Tempo de onboarding" },
 ];
 
 export const QuickScanSection = () => (

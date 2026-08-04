@@ -1,13 +1,16 @@
+import { StatusPulse } from "@/components/ui/status-pulse";
+
 interface QuickInfoItem {
   readonly label: string;
   readonly value: string;
+  readonly variant?: "default" | "status";
 }
 
 const QUICK_INFO_ITEMS: readonly QuickInfoItem[] = [
   { label: "Empresa Atual", value: "Mogno AI" },
   { label: "Foco Principal", value: "AI · Dados · Strategy" },
   { label: "Localização", value: "Brasil (remoto ok)" },
-  { label: "Status", value: "Aberto a oportunidades 🟢" },
+  { label: "Status", value: "Aberto a oportunidades", variant: "status" },
 ];
 
 export const QuickInfoBar = () => (
@@ -15,7 +18,10 @@ export const QuickInfoBar = () => (
     {QUICK_INFO_ITEMS.map((item) => (
       <div key={item.label} className="px-4 py-3 text-left">
         <p className="font-mono text-xs uppercase tracking-wide text-faint">{item.label}</p>
-        <p className="mt-1 font-semibold text-foreground">{item.value}</p>
+        <p className="mt-1 flex items-center gap-2 font-semibold text-foreground">
+          {item.value}
+          {item.variant === "status" && <StatusPulse />}
+        </p>
       </div>
     ))}
   </div>

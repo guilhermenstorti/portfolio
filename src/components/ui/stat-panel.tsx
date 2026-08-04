@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
+
 interface StatItem {
-  readonly value: string;
+  readonly value: ReactNode;
   readonly label: string;
 }
 

@@ -28,6 +28,7 @@ Formato OKLCH. Se o stack não suportar, converter para hex equivalente.
 | `--border-soft` | `oklch(28% 0.015 250)` | Bordas sutis (footer, seções) |
 | `--border-strong` | `oklch(38% 0.02 250)` | Bordas de botão secundário |
 | `--accent` | `oklch(75% 0.11 250)` | Azul de destaque (links, badges, títulos de seção) |
+| `--warn` | `oklch(75% 0.13 70)` | Âmbar — borda do box de "insight" (distingue de "learning", que usa `--accent`). Extensão adicionada na implementação, não fazia parte do styleguide original; segue a mesma fórmula L/C do `--accent` com o matiz girado. |
 | `--btn-bg` | `oklch(92% 0.006 250)` | Fundo do botão primário (claro sobre fundo escuro) |
 | `--btn-bg-hover` | `oklch(85% 0.01 250)` | Hover do botão primário |
 | `--btn-text` | `oklch(16% 0.012 250)` | Texto do botão primário |
@@ -95,3 +96,20 @@ Formato OKLCH. Se o stack não suportar, converter para hex equivalente.
 - Todos os valores de cor usam OKLCH — se o ambiente de destino não suportar, converter para hex mantendo a relação de luminância entre tokens (texto sempre com alto contraste sobre os respectivos fundos).
 - O tema é implementado via CSS custom properties no elemento raiz, permitindo trocar claro/escuro sem duplicar componentes.
 - Esta página tem apenas o tema escuro documentado aqui; o tema claro existe no protótipo e segue a mesma estrutura de tokens com valores invertidos.
+
+## Status de implementação (portfólio React)
+
+O portfólio (`/src`) implementa **apenas o tema escuro** deste documento —
+por escolha explícita, não por lacuna. Consequências práticas:
+
+- Os tokens de cor, tipografia, espaçamento e os componentes (nav, botão
+  primário/secundário, card de case, card de empresa, bloco de destaque)
+  estão todos implementados como especificado acima.
+- **Não implementados:** o toggle de tema claro/escuro e o toggle de
+  variação de copy do hero ("Direto"/"Provocativo") mencionados em
+  "Comportamento" — não existe tema claro no código, só o escuro. O token
+  `--toggle-track` existe no CSS mas não é usado por nenhum componente.
+- Foi adicionado um token que não está no styleguide original: `--warn`
+  (ver tabela de tokens acima) — necessário para diferenciar o box de
+  "insight" do "learning" nas páginas de case, distinção pedida pelo
+  `plan.md` que este styleguide não cobria.

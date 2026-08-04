@@ -1,4 +1,6 @@
+import type { ReactNode } from "react";
 import { getButtonClassName, type ButtonSize, type ButtonVariant } from "@/components/ui/button-styles";
+import { cn } from "@/lib/cn";
 
 interface ButtonProps {
   readonly href: string;
@@ -6,15 +8,26 @@ interface ButtonProps {
   readonly variant: ButtonVariant;
   readonly size?: ButtonSize;
   readonly target?: "_self" | "_blank";
+  readonly icon?: ReactNode;
+  readonly className?: string;
 }
 
-export const Button = ({ href, label, variant, size = "default", target = "_self" }: ButtonProps) => (
+export const Button = ({
+  href,
+  label,
+  variant,
+  size = "default",
+  target = "_self",
+  icon,
+  className,
+}: ButtonProps) => (
   <a
     href={href}
     target={target}
     rel={target === "_blank" ? "noreferrer" : undefined}
-    className={getButtonClassName(variant, size)}
+    className={cn(getButtonClassName(variant, size), className)}
   >
+    {icon}
     {label}
   </a>
 );

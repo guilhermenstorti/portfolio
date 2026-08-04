@@ -55,3 +55,131 @@ body {
     box-shadow: 0 2px 12px oklch(0% 0 0 / 0.16);
   }
 }
+
+@keyframes rocket-launch {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes rocket-flame-flicker {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(1.25);
+    opacity: 0.7;
+  }
+}
+
+.rocket-launch {
+  animation: rocket-launch 1.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.rocket-flame {
+  animation: rocket-flame-flicker 0.5s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes chevrons-up-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(1px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+}
+
+.chevrons-up-top,
+.chevrons-up-bottom {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: chevrons-up-pulse 1.8s ease-in-out infinite;
+}
+
+.chevrons-up-bottom {
+  animation-delay: 0.3s;
+}
+
+@keyframes header-cta-attention {
+  0%,
+  80%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 oklch(92% 0.006 250 / 0);
+  }
+  88% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 6px oklch(92% 0.006 250 / 0.25);
+  }
+  94% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 oklch(92% 0.006 250 / 0);
+  }
+}
+
+.header-cta-attention {
+  animation: header-cta-attention 5s ease-in-out infinite;
+}
+
+@keyframes shine-sweep {
+  0%,
+  12% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  22%,
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.shine-cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(88% 0.1 250 / 0.65),
+    transparent
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  animation: shine-sweep 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.logo-marquee-fade {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ping,
+  .rocket-launch,
+  .rocket-flame,
+  .chevrons-up-top,
+  .chevrons-up-bottom,
+  .header-cta-attention,
+  .shine-cta::after {
+    animation: none;
+  }
+}

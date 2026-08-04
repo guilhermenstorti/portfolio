@@ -22,7 +22,7 @@ export const CASE_CARDS: readonly CaseCardData[] = [
   {
     badgeLabel: "Estratégia & Retenção",
     title: "Accountfy: Redesign que Transformou o Portfólio",
-    subtitle: "Product Manager / PO · Jul 2022 – Jan 2024",
+    subtitle: "Product Manager / PO · Jul 2022 – Dez 2024",
     description:
       "Produto de orçamento com churn alto e UX defasada, ofuscado pelo carro-chefe de controladoria. Redesenhei a experiência, reconstruí o onboarding, e transformei o produto em peça central do portfólio.",
     resultValue:

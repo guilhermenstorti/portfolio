@@ -8,6 +8,7 @@ export const QuickScanActions = () => (
       label="Agendar uma conversa"
       variant="primary"
       target="_blank"
+      className="shine-cta relative overflow-hidden"
     />
     <Button href={CONTACT_LINKS.cvPdf} label="Baixar CV em PDF" variant="secondary" target="_blank" />
     <Button href={CONTACT_LINKS.linkedin} label="LinkedIn" variant="secondary" target="_blank" />

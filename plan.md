@@ -162,36 +162,48 @@ CTA no final de cada case.
 - Escaneável. Hierarquia visual clara, sem blocos de texto longos.
 - Profissional mas acessível. Quebra a quarta parede sem amadorismo.
 
-## Cores sugeridas
+## Fonte da verdade de design: styleguide.md
 
-```
-Primária:        #1e3a8a (azul profundo)
-Primária clara:  #3b82f6 (azul médio)
-Destaque/CTA:    #f97316 (laranja)
-Destaque hover:  #ea580c (laranja escuro)
-Sucesso:         #10b981 (verde — para resultados)
-Background:      #f9fafb (cinza claríssimo)
-Texto:           #1f2937 (cinza escuro)
-Texto light:     #6b7280 (cinza médio)
-Bordas:          #e5e7eb (cinza claro)
-Branco:          #ffffff
-```
+**A partir da revisão para tema escuro, cores, tipografia e definição de
+componentes reutilizáveis não são mais especificadas aqui — são
+especificadas em [`styleguide.md`](styleguide.md).** Esta seção evita
+duplicar tokens (a duplicação foi exatamente o que ficou desatualizado
+na primeira versão deste documento). `plan.md` continua sendo a fonte da
+verdade para copy, storytelling, estrutura de páginas e arquitetura
+(seção 2); `styleguide.md` é a fonte da verdade para o sistema visual.
+
+Resumo de alto nível (ver `styleguide.md` para os tokens completos em
+OKLCH e a especificação de cada componente):
+
+- **Tema:** escuro, único (sem alternância claro/escuro implementada).
+- **Fundo de página único:** todas as seções (Hero, Quick Scan, Sobre,
+  CTA) usam o mesmo fundo `--bg`; não há mais alternância de faixas
+  brancas/cinzas entre seções. Só cards (`--card-bg`) e o bloco de
+  destaque de resultados (`--contrast-bg`) se destacam do fundo.
+- **Tipografia:** Space Grotesk (títulos) + IBM Plex Sans (corpo) +
+  IBM Plex Mono (eyebrows, labels uppercase, badges, números/stats).
+- **Botões:** primário = claro sobre fundo escuro (radius 3px); 
+  secundário = só borda. Um único CTA primário por seção.
+- **Badge de categoria:** pill mono uppercase com tom de accent
+  translúcido — não é mais colorido por categoria (roxo/verde/azul).
+  As cores por case (ver abaixo) continuam vivendo apenas no gradiente
+  de hero de cada página de case.
+- **Resultado em destaque (cards):** texto colorido (`--green-result`)
+  direto sobre o card, sem caixa/borda separada.
+- **Bloco de destaque (Resultados que importam):** painel `--contrast-bg`
+  com grid de 3 colunas, números grandes em `--green`. Substitui a antiga
+  lista com marcadores na seção Quick Scan.
 
 ## Cores dos heroes por case
+
+Não mudaram — continuam sendo a identidade visual de cada case,
+independente do tema geral do site:
 
 ```
 Mogno AI:          #8b5cf6 → #6d28d9 (roxo)
 Accountfy AI:      #8b5cf6 → #a78bfa (roxo claro)
 Accountfy FP&A:    #10b981 → #059669 (verde)
 Euphoria BI:       #3b82f6 → #1e40af (azul)
-```
-
-## Tipografia
-
-System font stack:
-```css
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 
-             Roboto, 'Helvetica Neue', Arial, sans-serif;
 ```
 
 ## Breakpoints
@@ -201,18 +213,6 @@ Desktop:  > 1024px
 Tablet:   768px – 1024px
 Mobile:   < 768px
 ```
-
-## Componentes reutilizáveis
-
-- **Badge:** pill colorido (texto branco, fundo colorido, 
-  border-radius: 20px)
-- **Card de case:** border, hover com sombra e borda colorida
-- **Resultado em destaque:** fundo verde suave, borda esquerda verde, 
-  número grande
-- **Box de insight:** fundo cinza claro, borda esquerda laranja
-- **Learning item:** fundo azul claro, borda esquerda azul
-- **CTA section:** gradiente azul, texto branco, botões brancos
-- **Tag de skill:** inline, fundo cinza, texto escuro, sem borda
 
 ---
 
@@ -237,8 +237,8 @@ CV PDF:     public/assets/docs/guilherme-storti-cv.pdf
 
 ## Layout
 
-Fundo: gradiente azul (primária → #2563eb).
-Texto centralizado. Cor branca.
+Fundo: `--bg` (mesmo fundo do resto da página, sem bloco de cor separado).
+Texto centralizado. Nome em `--text`, cargo em `--accent`, tagline em `--text-muted` (ver styleguide.md).
 
 ## Conteúdo
 
@@ -264,14 +264,18 @@ Texto centralizado. Cor branca.
 > sem perder a visão estratégica.
 
 **Botões** (2, lado a lado):
-- [📅 Agendar Chamada] → link Calendar (nova aba)
+- [Agendar Chamada, ícone de calendário SVG] → link Calendar (nova aba)
 - [Ver Cases] → ancora na seção de cards (#cases)
 
-**Quick Info Bar** (cards horizontais, fundo semi-transparente):
+**Quick Info Bar** (grid com divisórias, ver styleguide.md):
 
-| Empresa Atual  | Foco Principal        | Localização          | Status                      |
-|----------------|-----------------------|----------------------|-----------------------------|
-| Mogno AI       | AI · Dados · Strategy | Brasil (remoto ok)   | Aberto a oportunidades 🟢   |
+| Empresa Atual  | Foco Principal        | Localização          | Status                             |
+|----------------|-----------------------|----------------------|-------------------------------------|
+| Mogno AI       | AI · Dados · Strategy | Brasil (remoto ok)   | Aberto a oportunidades + radar pulsante verde |
+
+O indicador de status não usa mais emoji (🟢). É um componente `StatusPulse`:
+dot verde sólido + anel `animate-ping` ao redor, no estilo de indicador
+de "serviço online" de painéis de infra. Respeita `prefers-reduced-motion`.
 
 ---
 
@@ -279,9 +283,13 @@ Texto centralizado. Cor branca.
 
 ## Layout
 
-Fundo branco ou cinza claro.
-Conteúdo centralizado, max-width 900px.
-Cards ou lista com labels em bold e valores em texto normal.
+Fundo: `--bg` (mesmo fundo da página).
+Conteúdo centralizado, max-width 1160px (`max-w-content`).
+Campos em grid "linhas de tabela" (3 colunas, gap 1px usando `--border`
+como divisor) com label mono uppercase + valor em texto normal.
+"Resultados que importam" vira o bloco de destaque `--contrast-bg`
+(painel de 3 colunas com números grandes em `--green`), não uma lista
+com marcadores.
 
 ## Título:
 > Pra facilitar sua vida
@@ -311,13 +319,14 @@ Português (nativo) · Inglês (fluente)
 **Diferencial técnico:**
 Background em desenvolvimento de software (ADVPL/Protheus, HTML, CSS, JavaScript, SQL, REST API), construção de ETL e Data Warehouses, e fluência em arquiteturas de IA/LLM. Falo a mesma língua do time de engenharia.
 
-**Resultados que importam:**
-- Produto de IA lançado do zero (Google for Startups)
-- Revenue via upsell: +11% ao mês
-- Tickets de suporte: -22% ao mês
-- Churn: -5 pontos percentuais
-- Inadimplência: -32,5% durante a pandemia
-- Tempo de onboarding: -85%
+**Resultados que importam:** (bloco de destaque `--contrast-bg`, grid
+3 colunas de stat + label — ver styleguide.md e §3)
+- [ícone de foguete animado, "levantando voo"] Produto de IA lançado do zero (Google for Startups)
+- +11% Revenue via upsell / mês
+- -22% Tickets de suporte / mês
+- -5pp Churn mensal
+- -32,5% Inadimplência durante a pandemia
+- -85% Tempo de onboarding
 
 **Disponibilidade:**
 Aberto a oportunidades · Remoto ou híbrido.
@@ -331,10 +340,12 @@ Aberto a oportunidades · Remoto ou híbrido.
 
 ## Layout
 
-Fundo branco. Logos centralizados em linha.
-Logos em grayscale por padrão, cor no hover.
+Fundo: `--bg`. Logos em cards individuais (borda `--border-soft`,
+radius 3px), grid de 6 colunas (gap 16px) no desktop.
+Logos em grayscale + opacidade reduzida por padrão; hover remove o
+filtro e destaca a borda do card (`--company-hover-border`).
 Não linkar para os sites das empresas.
-Responsivo: linha única no desktop, grid 2x3 no mobile.
+Responsivo: grid 2 colunas no mobile, 3 no tablet, 6 no desktop.
 
 ## Título:
 > Empresas atendidas pelos produtos que liderei
@@ -347,7 +358,10 @@ Responsivo: linha única no desktop, grid 2x3 no mobile.
 Will Bank · Dotz · Zup · GRI Club · Grupo Salta · Atlantic City Casinos · Burger King · Flamengo · Itaú · Botafogo · Instituto Ayrton Senna · TOTVS
 
 ## Fonte dos logos:
-Criar pasta para posterior inserção de logos em SVG/PNG manualmente. Por enquanto, usar placeholder.
+Logos reais em PNG inseridas em `public/assets/img/logos/` (12 arquivos,
+um por empresa listada acima). Exibidas em carrossel horizontal contínuo
+(marquee), grayscale por padrão, cor no hover; pausa ao passar o mouse
+sobre a faixa. Ver styleguide.md / §3 para o restante do tratamento visual.
 
 ---
 
@@ -355,13 +369,18 @@ Criar pasta para posterior inserção de logos em SVG/PNG manualmente. Por enqua
 
 ## Layout
 
-Grid de 4 cards (2x2 desktop, 1 coluna mobile).
-Cada card tem hover com sombra + borda colorida.
+Grid de 2 colunas (1 coluna mobile), gap 20px.
+Cada card (`--card-bg`, borda `--border`, radius 4px) tem hover com
+sombra + borda em `--card-hover-border` (accent azul, igual pra todos
+os cards — não é mais colorida por categoria).
 Cada card é clicável (link para página do case).
+Badge de categoria é um pill mono uppercase neutro (`--badge-bg` /
+`--badge-text`), mesmo tratamento visual nos 4 cards — só o texto do
+label muda.
 
 ## CARD 1 — Mogno AI
 
-**Badge:** AI & Plataforma (cor: roxo #8b5cf6)
+**Badge:** AI & Plataforma
 **Título:** Mogno AI — Do Zero ao Lançamento Global
 **Subtítulo:** PM Senior · Out 2025 – Jul 2026
 **Descrição:**
@@ -381,7 +400,7 @@ Valor: Produto lançado e validado ✅ · 54% User Activation Rate
 
 ## CARD 2 — Accountfy AI & Analytics
 
-**Badge:** Growth & AI (cor: verde #10b981)
+**Badge:** Growth & AI
 **Título:** Accountfy: De Chatbots Básicos a IA que Gera Receita
 **Subtítulo:** Product Manager · Jan 2025 – Out 2025
 **Descrição:**
@@ -400,9 +419,9 @@ Valor: +11% revenue/mês · -22% tickets de suporte
 
 ## CARD 3 — Accountfy FP&A
 
-**Badge:** Estratégia & Retenção (cor: verde #10b981)
+**Badge:** Estratégia & Retenção
 **Título:** Accountfy: Redesign que Transformou o Portfólio
-**Subtítulo:** Product Manager / PO · Jul 2022 – Jan 2024
+**Subtítulo:** Product Manager / PO · Jul 2022 – Dez 2024
 **Descrição:**
 > Produto de orçamento com churn alto e UX defasada, ofuscado pelo 
 > carro-chefe de controladoria. Redesenhei a experiência, reconstruí 
@@ -419,7 +438,7 @@ Valor: -5pp churn mensal · -85% tempo de onboarding · +3~5% receita de upsell/
 
 ## CARD 4 — Euphoria BI
 
-**Badge:** Dados & Fundação (cor: azul #3b82f6)
+**Badge:** Dados & Fundação
 **Título:** Euphoria — Quando BI Vira Função Estratégica
 **Subtítulo:** BI Analyst · Abr 2019 – Dez 2020
 **Descrição:**
@@ -440,11 +459,14 @@ Valor: -32,5% inadimplência financeira
 
 ## Layout
 
-Fundo cinza claro. 
+Fundo: `--bg` (mesmo fundo da página).
 Texto principal em coluna (~700px max-width).
-Bloco de profundidade técnica com destaque visual (box ou card).
+Bloco de profundidade técnica com destaque visual: box `--card-bg`
+com borda esquerda `--warn` (âmbar — distingue de "learning", que usa
+`--accent` azul).
 Linha de comunidade compacta.
-Tags de expertise em grid de categorias.
+Tags de expertise em grid de categorias, label da categoria em mono
+uppercase (`--text-dim`).
 
 ---
 
@@ -539,8 +561,10 @@ Jenkins · Git · Pentaho · AI Tech
 
 ## Layout
 
-Fundo: gradiente azul (mesmo do hero).
-Texto centralizado, branco. Botões brancos.
+Fundo: painel `--contrast-bg` centralizado (não é mais um gradiente
+azul full-width — ver componente CTA section em styleguide.md).
+Texto centralizado (`--contrast-foreground` / `--contrast-muted`).
+Um botão primário (claro) + um secundário (borda), não os dois brancos.
 
 ## Título:
 > Vamos conversar?
@@ -551,8 +575,8 @@ Texto centralizado, branco. Botões brancos.
 > ouvir sobre o desafio que você tem.
 
 ## Botões:
-- [📅 Agendar uma conversa de 15 min] → Calendar (booking time)
-- [✉️ Me mandar um email] → mailto:guilhermenstorti@gmail.com
+- [Agendar uma conversa de 15 min, ícone de calendário SVG] → Calendar (booking time)
+- [Me mandar um email, ícone de carta/envelope SVG] → mailto:guilhermenstorti@gmail.com
 
 ---
 
@@ -1049,7 +1073,8 @@ Se quiser ir mais fundo em metodologia, decisões ou learnings,
 ## Header (todas as páginas)
 
 **Posição:** Sticky (fixo no topo ao rolar).
-**Fundo:** Branco com borda inferior sutil e sombra leve.
+**Fundo:** `--nav-bg` (translúcido, com blur) com borda inferior sutil
+(`--border-soft`).
 
 **Homepage:**
 Logo (GN) | Cases | Sobre | [Botão: Conversar]
@@ -1064,7 +1089,8 @@ Comportamento: Logo sempre linka para a rota `/`.
 
 ## Footer (todas as páginas)
 
-**Fundo:** Escuro (#1f2937). Texto branco.
+**Fundo:** `--bg` (mesmo da página), separado por borda superior sutil
+(`--border-soft`). Texto em `--text-muted`, links com hover `--accent`.
 
 **Links:** LinkedIn · Email · GitHub · WhatsApp
 **Crédito:** © 2025 Guilherme Storti. Feito com café e obsessão por produto.
@@ -1081,7 +1107,9 @@ Comportamento: Logo sempre linka para a rota `/`.
 > Enquanto isso, você pode: 
 > [Voltar pro portfólio] ou [me mandar uma mensagem].
 
-**Implementação:** Fundo branco, texto centralizado, tom leve, GIF animado.
+**Implementação:** Fundo `--bg` (mesmo da página), texto centralizado,
+tom leve. GIF animado ainda não implementado (usando emoji 🚧 como
+placeholder).
 Botão principal navega para a rota `/` via React Router (sem reload de página).
 
 ---
@@ -1207,7 +1235,7 @@ criar um "Case de Origem" compacto com os números da Teclaser
 
 ## Links pendentes de configuração
 
-- [ ] Buscar/criar logos SVG dos clientes (Will Bank, Dotz, Zup, GRI Club, Grupo Salta, Atlantic City Casinos)
+- [x] Logos dos clientes inseridas (12, em PNG — todas as empresas listadas em §7)
 - [ ] Buscar/criar imagens dos selos Capterra
 - [ ] Gerar imagem de preview para Open Graph
 - [ ] Exportar CV atualizado em PDF

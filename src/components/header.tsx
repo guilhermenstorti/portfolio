@@ -19,6 +19,7 @@ const HomeNav = () => (
       variant="primary"
       size="nav"
       target="_blank"
+      className="header-cta-attention"
     />
   </nav>
 );
