@@ -97,3 +97,52 @@ export const LaunchingRocketIcon = ({ className }: IconProps) => (
     <path className="rocket-flame" d="M10.5 18 10 21.5l2-1.3 2 1.3-.5-3.5" />
   </svg>
 );
+
+export const CloseIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    <path d="M18 6 6 18M6 6l12 12" />
+  </svg>
+);
+
+export const TargetIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="9" />
+    <circle cx="12" cy="12" r="5" />
+    <circle cx="12" cy="12" r="1" />
+  </svg>
+);
+
+export const BrainIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    <path d="M12 4.5c-1.4-1.3-3.5-1.5-5-.4C5.5 5 5 6.3 5.3 7.5 4.2 8 3.5 9.1 3.5 10.4c0 1 .4 1.9 1.1 2.6-.4.6-.6 1.3-.6 2 0 1.9 1.5 3.5 3.4 3.6.3 1.4 1.6 2.4 3.1 2.4h1.2V4.5Z" />
+    <path d="M12 4.5c1.4-1.3 3.5-1.5 5-.4 1.5.9 2 2.2 1.7 3.4 1.1.5 1.8 1.6 1.8 2.9 0 1-.4 1.9-1.1 2.6.4.6.6 1.3.6 2 0 1.9-1.5 3.5-3.4 3.6-.3 1.4-1.6 2.4-3.1 2.4h-1.2V4.5Z" />
+    <path d="M9 8.5c.6.3 1.4.3 2 0M9.5 12c.8.4 1.7.4 2.5 0M9 15.5c.6.3 1.4.3 2 0" />
+  </svg>
+);

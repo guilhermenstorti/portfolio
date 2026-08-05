@@ -177,6 +177,76 @@ body {
   animation: avatar-ring-liquid-flow 8s ease-in-out infinite;
 }
 
+.profile-avatar-scene {
+  perspective: 800px;
+}
+
+.profile-avatar-tilt {
+  transform-style: preserve-3d;
+  transition: transform 150ms ease-out;
+}
+
+.profile-avatar-toss {
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.profile-avatar-spin {
+  transform-style: preserve-3d;
+}
+
+.profile-avatar-face {
+  backface-visibility: hidden;
+}
+
+.profile-avatar-face-back {
+  transform: rotateY(180deg);
+}
+
+@keyframes coin-toss {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-42px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes coin-spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(1800deg);
+  }
+}
+
+.profile-avatar-toss.is-flipping {
+  animation: coin-toss 1000ms cubic-bezier(0.45, 0, 0.4, 1) 1;
+}
+
+.profile-avatar-spin.is-flipping {
+  animation: coin-spin 1000ms cubic-bezier(0.45, 0, 0.4, 1) 1;
+}
+
+@keyframes toast-slide-in {
+  0% {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.toast-slide-in {
+  animation: toast-slide-in 300ms ease-out;
+}
+
 .logo-marquee-fade {
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(
@@ -198,5 +268,15 @@ body {
   .shine-cta::after,
   .avatar-ring-liquid {
     animation: none;
+  }
+
+  .profile-avatar-tilt {
+    transition: none;
+  }
+
+  .profile-avatar-toss.is-flipping,
+  .profile-avatar-spin.is-flipping,
+  .toast-slide-in {
+    animation-duration: 1ms;
   }
 }
