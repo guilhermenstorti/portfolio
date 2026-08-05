@@ -1,6 +1,6 @@
 import type { CaseStudyData } from "@/features/case-study/types";
 
-export const ACCOUNTFY_AI_ANALYTICS_DATA: CaseStudyData = {
+export const ACCOUNTFY_AI_ANALYTICS_DATA_PT: CaseStudyData = {
   seoTitle: "Case: Accountfy AI & Analytics — Growth via IA | Guilherme Storti",
   badgeEmoji: "🚀",
   badgeLabel: "Growth & AI",
@@ -85,3 +85,5 @@ export const ACCOUNTFY_AI_ANALYTICS_DATA: CaseStudyData = {
     },
   ],
 };
+
+export const ACCOUNTFY_AI_ANALYTICS_DATA = ACCOUNTFY_AI_ANALYTICS_DATA_PT;

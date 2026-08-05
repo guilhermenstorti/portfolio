@@ -1,6 +1,6 @@
 import type { CaseStudyData } from "@/features/case-study/types";
 
-export const EUPHORIA_BI_DATA: CaseStudyData = {
+export const EUPHORIA_BI_DATA_PT: CaseStudyData = {
   seoTitle: "Case: Euphoria BI — Fundação de Dados | Guilherme Storti",
   badgeEmoji: "📊",
   badgeLabel: "Dados & Fundação",
@@ -91,3 +91,5 @@ export const EUPHORIA_BI_DATA: CaseStudyData = {
     },
   ],
 };
+
+export const EUPHORIA_BI_DATA = EUPHORIA_BI_DATA_PT;

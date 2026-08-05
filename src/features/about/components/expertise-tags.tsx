@@ -1,17 +1,18 @@
+import { useTranslation } from 'react-i18next';
 import { Tag } from "@/components/ui/tag";
 
 interface ExpertiseCategory {
-  readonly category: string;
+  readonly categoryKey: string;
   readonly skills: readonly string[];
 }
 
 const EXPERTISE_CATEGORIES: readonly ExpertiseCategory[] = [
   {
-    category: "Produto",
+    categoryKey: "skillsProduct",
     skills: [
       "Product Discovery",
       "Product Strategy",
-      "Roadmap & Priorização",
+      "skillRoadmapPrioritization",
       "Stakeholder Management",
       "OKR",
       "Go-to-Market",
@@ -19,7 +20,7 @@ const EXPERTISE_CATEGORIES: readonly ExpertiseCategory[] = [
     ],
   },
   {
-    category: "Dados & Analytics",
+    categoryKey: "skillsData",
     skills: [
       "SQL",
       "PowerBI",
@@ -28,11 +29,11 @@ const EXPERTISE_CATEGORIES: readonly ExpertiseCategory[] = [
       "Data Warehouse",
       "ETL",
       "Data Storytelling",
-      "Métricas de Produto",
+      "skillProductMetrics",
     ],
   },
   {
-    category: "Metodologias",
+    categoryKey: "skillsMethodologies",
     skills: [
       "SCRUM",
       "Kanban",
@@ -40,13 +41,13 @@ const EXPERTISE_CATEGORIES: readonly ExpertiseCategory[] = [
       "Jobs to be Done",
       "RICE",
       "Continuous Discovery",
-      "Experimentação",
+      "skillExperimentation",
       "Double Diamond",
       "A/B Testing",
     ],
   },
   {
-    category: "Ferramentas",
+    categoryKey: "skillsTools",
     skills: [
       "Jira",
       "Miro",
@@ -62,17 +63,27 @@ const EXPERTISE_CATEGORIES: readonly ExpertiseCategory[] = [
   },
 ];
 
-export const ExpertiseTags = () => (
-  <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
-    {EXPERTISE_CATEGORIES.map((group) => (
-      <div key={group.category}>
-        <p className="font-mono text-xs uppercase tracking-wide text-dim">{group.category}</p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {group.skills.map((skill) => (
-            <Tag key={skill} label={skill} />
-          ))}
+const TRANSLATABLE_SKILL_KEYS = new Set([
+  "skillRoadmapPrioritization",
+  "skillProductMetrics",
+  "skillExperimentation",
+]);
+
+export const ExpertiseTags = () => {
+  const { t } = useTranslation('about');
+
+  return (
+    <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+      {EXPERTISE_CATEGORIES.map((group) => (
+        <div key={group.categoryKey}>
+          <p className="font-mono text-xs uppercase tracking-wide text-dim">{t(group.categoryKey)}</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {group.skills.map((skill) => (
+              <Tag key={skill} label={TRANSLATABLE_SKILL_KEYS.has(skill) ? t(skill) : skill} />
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-);
+      ))}
+    </div>
+  );
+};

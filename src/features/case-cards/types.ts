@@ -1,8 +1,8 @@
 export interface CaseCardData {
-  readonly badgeLabel: string;
-  readonly title: string;
-  readonly subtitle: string;
-  readonly description: string;
-  readonly resultValue: string;
+  readonly badgeKey: string;
+  readonly titleKey: string;
+  readonly subtitleKey: string;
+  readonly descriptionKey: string;
+  readonly resultKey: string;
   readonly linkTo: string;
 }

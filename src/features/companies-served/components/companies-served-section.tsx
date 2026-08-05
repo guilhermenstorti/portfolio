@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { LogoMarquee } from "@/features/companies-served/components/logo-marquee";
 
 interface CompanyLogo {
@@ -20,19 +21,22 @@ const COMPANY_LOGOS: readonly CompanyLogo[] = [
   { name: "TOTVS", slug: "totvs" },
 ];
 
-export const CompaniesServedSection = () => (
-  <section className="px-12 py-16">
-    <div className="mx-auto max-w-content text-center">
-      <h2 className="text-3xl text-foreground">
-        Algumas das empresas atendidas pelos produtos que liderei
-      </h2>
-      <p className="mt-4 text-muted">
-        Mais de 450 empresas em 13 países já se beneficiaram dos produtos que
-        ajudei a construir e evoluir.
-      </p>
-      <div className="mt-10">
-        <LogoMarquee logos={COMPANY_LOGOS} />
+export const CompaniesServedSection = () => {
+  const { t } = useTranslation('companiesServed');
+
+  return (
+    <section className="px-12 py-16">
+      <div className="mx-auto max-w-content text-center">
+        <h2 className="text-3xl text-foreground">
+          {t('title')}
+        </h2>
+        <p className="mt-4 text-muted">
+          {t('subtitle')}
+        </p>
+        <div className="mt-10">
+          <LogoMarquee logos={COMPANY_LOGOS} />
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};

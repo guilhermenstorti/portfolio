@@ -6,7 +6,13 @@ export const CONTACT_LINKS = {
   scheduleCall: "https://calendar.app.google/BKeoRpgz5FATNNQKA",
   github: "https://github.com/guilhermenstorti",
   substack: "https://onproductpath.substack.com",
-  cvPdf: "/portfolio/assets/docs/guilherme-storti-cv.pdf",
 } as const;
+
+export const getCvLink = (language: string): string => {
+  if (language === "en") {
+    return "/portfolio/assets/docs/resume-guilherme-storti-pm.pdf";
+  }
+  return "/portfolio/assets/docs/cv-guilherme-storti-pm.pdf";
+};
 
 export const MAILTO_EMAIL_LINK = `mailto:${CONTACT_LINKS.email}`;

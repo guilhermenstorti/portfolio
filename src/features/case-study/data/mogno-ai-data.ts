@@ -1,6 +1,6 @@
 import type { CaseStudyData } from "@/features/case-study/types";
 
-export const MOGNO_AI_DATA: CaseStudyData = {
+export const MOGNO_AI_DATA_PT: CaseStudyData = {
   seoTitle: "Case: Mogno AI — Do Zero ao Lançamento | Guilherme Storti",
   badgeEmoji: "🚀",
   badgeLabel: "AI & Plataforma",
@@ -99,3 +99,5 @@ export const MOGNO_AI_DATA: CaseStudyData = {
     },
   ],
 };
+
+export const MOGNO_AI_DATA = MOGNO_AI_DATA_PT;

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import { AnchorScrollLink } from "@/components/ui/anchor-scroll-link";
 import { getButtonClassName } from "@/components/ui/button-styles";
@@ -8,9 +9,8 @@ import { useToast } from "@/hooks/use-toast";
 import { QuickInfoBar } from "@/features/hero/components/quick-info-bar";
 import { ProfileAvatar } from "@/features/hero/components/profile-avatar";
 
-const COIN_FLIP_MESSAGE = "Produto se decide com dados e estratégia, não no cara ou coroa.";
-
 export const HeroSection = () => {
+  const { t } = useTranslation('hero');
   const { message, isVisible, showToast, hideToast } = useToast();
 
   return (
@@ -18,28 +18,23 @@ export const HeroSection = () => {
       <div className="mx-auto max-w-3xl">
         <ProfileAvatar
           src="/portfolio/assets/img/logos/gns.png"
-          alt="Guilherme Storti"
-          onFlipComplete={() => showToast(COIN_FLIP_MESSAGE)}
+          alt={t('name')}
+          onFlipComplete={() => showToast(t('coinFlipMessage'))}
         />
         <p className="mt-6 text-sm text-faint">
-          Você provavelmente está com 14 abas abertas agora.
-          <br />
-          Se essa for a última que você precisar abrir, fiz meu trabalho.
+          {t('subtitle')}
         </p>
         <h1 className="mt-4 text-[clamp(40px,5.5vw,68px)] leading-[1.02] tracking-[-0.02em] text-foreground">
-          Guilherme Storti
+          {t('name')}
         </h1>
-        <p className="mt-2 text-[22px] font-medium text-accent">Product Manager Senior</p>
+        <p className="mt-2 text-[22px] font-medium text-accent">{t('title')}</p>
         <p className="mx-auto mt-6 max-w-2xl text-muted">
-          PM Senior com 6+ anos em produtos digitais, fazendo produto de verdade:
-          estruturando métricas antes do MVP, reduzindo churn enquanto escala,
-          falando a mesma língua do dev e navegando IA sem perder a visão
-          estratégica.
+          {t('description')}
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button
             href={CONTACT_LINKS.scheduleCall}
-            label="Agendar Chamada"
+            label={t('scheduleCall')}
             icon={<CalendarIcon className="h-4 w-4" />}
             variant="primary"
             target="_blank"
@@ -47,7 +42,7 @@ export const HeroSection = () => {
           />
           <AnchorScrollLink
             targetId="cases"
-            label="Ver Cases"
+            label={t('seeCases')}
             className={getButtonClassName("secondary")}
           />
         </div>
@@ -55,14 +50,14 @@ export const HeroSection = () => {
         <div className="mt-6 flex flex-wrap justify-center gap-4">
           <Button
             href={CONTACT_LINKS.linkedin}
-            label="LinkedIn"
+            label={t('linkedin')}
             icon={<LinkedinIcon className="h-4 w-4" />}
             variant="secondary"
             target="_blank"
           />
           <Button
             href={CONTACT_LINKS.github}
-            label="GitHub"
+            label={t('github')}
             icon={<GithubIcon className="h-4 w-4" />}
             variant="secondary"
             target="_blank"

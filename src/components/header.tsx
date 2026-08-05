@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import { AnchorScrollLink } from "@/components/ui/anchor-scroll-link";
+import { LanguageSelector } from "@/components/ui/language-selector";
 import { CONTACT_LINKS } from "@/lib/contact-links";
 
 interface HeaderProps {
@@ -9,26 +11,36 @@ interface HeaderProps {
 
 const NAV_LINK_CLASSES = "text-sm font-medium text-muted hover:text-accent";
 
-const HomeNav = () => (
-  <nav className="flex items-center gap-6">
-    <AnchorScrollLink targetId="cases" label="Cases" className={NAV_LINK_CLASSES} />
-    <AnchorScrollLink targetId="about" label="Sobre" className={NAV_LINK_CLASSES} />
-    <Button
-      href={CONTACT_LINKS.scheduleCall}
-      label="Conversar"
-      variant="primary"
-      size="nav"
-      target="_blank"
-      className="header-cta-attention"
-    />
-  </nav>
-);
+const HomeNav = () => {
+  const { t } = useTranslation('header');
+  return (
+    <nav className="flex items-center gap-6">
+      <AnchorScrollLink targetId="cases" label={t('cases')} className={NAV_LINK_CLASSES} />
+      <AnchorScrollLink targetId="about" label={t('about')} className={NAV_LINK_CLASSES} />
+      <Button
+        href={CONTACT_LINKS.scheduleCall}
+        label={t('talk')}
+        variant="primary"
+        size="nav"
+        target="_blank"
+        className="header-cta-attention"
+      />
+      <LanguageSelector />
+    </nav>
+  );
+};
 
-const CaseNav = () => (
-  <Link to="/" className={NAV_LINK_CLASSES}>
-    ← Voltar
-  </Link>
-);
+const CaseNav = () => {
+  const { t } = useTranslation('header');
+  return (
+    <div className="flex items-center gap-6">
+      <Link to="/" className={NAV_LINK_CLASSES}>
+        {t('back')}
+      </Link>
+      <LanguageSelector />
+    </div>
+  );
+};
 
 export const Header = ({ variant }: HeaderProps) => (
   <header className="sticky top-0 z-50 border-b border-border-soft bg-nav backdrop-blur">

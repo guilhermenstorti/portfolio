@@ -1,6 +1,6 @@
 import type { CaseStudyData } from "@/features/case-study/types";
 
-export const ACCOUNTFY_FPA_DATA: CaseStudyData = {
+export const ACCOUNTFY_FPA_DATA_PT: CaseStudyData = {
   seoTitle: "Case: Accountfy FP&A — Redesign e Retenção | Guilherme Storti",
   badgeEmoji: "🎯",
   badgeLabel: "Estratégia & Retenção",
@@ -78,3 +78,5 @@ export const ACCOUNTFY_FPA_DATA: CaseStudyData = {
     },
   ],
 };
+
+export const ACCOUNTFY_FPA_DATA = ACCOUNTFY_FPA_DATA_PT;
