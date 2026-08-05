@@ -4,7 +4,7 @@ export const EUPHORIA_BI_DATA: CaseStudyData = {
   seoTitle: "Case: Euphoria BI — Fundação de Dados | Guilherme Storti",
   badgeEmoji: "📊",
   badgeLabel: "Dados & Fundação",
-  title: "Euphoria — Fundação de BI",
+  title: "Euphoria: Fundação de BI",
   subtitle:
     "Como construí a área de Business Intelligence de uma holding com 10+ empresas, transformando dados dispersos em decisões estratégicas, e reduzindo inadimplência em 32,5% durante a pandemia.",
   heroGradientFrom: "#3b82f6",
@@ -54,7 +54,7 @@ export const EUPHORIA_BI_DATA: CaseStudyData = {
     {
       subheading: "Mudança cultural",
       paragraphs: [
-        "Convencer pessoas que sempre decidiram pela intuição a confiarem nos dados. Não se faz com uma apresentação. Se faz com pequenas vitórias: um dashboard que economiza 2 horas, um dado que evita uma decisão errada.",
+        "Convencer pessoas que sempre decidiram pela intuição a confiarem nos dados não se faz com uma apresentação. Se faz com pequenas vitórias: um dashboard que economiza 2 horas, um dado que evita uma decisão errada.",
       ],
     },
   ],
@@ -87,7 +87,7 @@ export const EUPHORIA_BI_DATA: CaseStudyData = {
     },
     {
       title: "3. Essa experiência definiu quem sou como PM.",
-      text: "Tudo que faço hoje — métricas, dashboards, cultura de dados — nasceu aqui. Não é teoria de curso. É prática do zero.",
+      text: "Tudo que faço hoje (métricas, dashboards, cultura de dados) nasceu aqui. Não é teoria de curso. É prática do zero.",
     },
   ],
 };

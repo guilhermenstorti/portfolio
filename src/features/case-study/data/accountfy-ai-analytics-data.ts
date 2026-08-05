@@ -4,7 +4,7 @@ export const ACCOUNTFY_AI_ANALYTICS_DATA: CaseStudyData = {
   seoTitle: "Case: Accountfy AI & Analytics — Growth via IA | Guilherme Storti",
   badgeEmoji: "🚀",
   badgeLabel: "Growth & AI",
-  title: "Accountfy — AI & Analytics",
+  title: "Accountfy: AI & Analytics",
   subtitle:
     "De chatbots básicos e desconectados a uma camada de IA coesa que reduziu tickets de suporte em 22% e cresceu receita em 11% ao mês.",
   heroGradientFrom: "#8b5cf6",
@@ -33,7 +33,7 @@ export const ACCOUNTFY_AI_ANALYTICS_DATA: CaseStudyData = {
       text: "Ninguém sabia quais features estavam sendo usadas, por quem, com que frequência.",
     },
     {
-      lead: "Pressão de revenue.",
+      lead: "Pressão de receita.",
       text: "A empresa precisava que IA gerasse upsell, e ninguém tinha clareza de como.",
     },
   ],
@@ -41,7 +41,7 @@ export const ACCOUNTFY_AI_ANALYTICS_DATA: CaseStudyData = {
     {
       subheading: "Discovery e diagnóstico",
       paragraphs: [
-        "Analisei dados de uso, conduzi entrevistas com clientes e mapeei a jornada do usuário com as features de IA. O diagnóstico: o problema não era a IA em si. Era a experiência em volta dela.",
+        "Analisei dados crus de utilização, conduzi entrevistas com clientes e mapeei a jornada do usuário com as features de IA. O diagnóstico: o problema não era a IA em si. Era a experiência em volta dela.",
       ],
     },
     {
@@ -66,7 +66,7 @@ export const ACCOUNTFY_AI_ANALYTICS_DATA: CaseStudyData = {
       text: "e redução no tempo gasto pelo usuário nos fluxos.",
     },
     {
-      lead: "Google for Startups.",
+      lead: "Produtos acelerados pelo Google for Startups.",
       text: "Reconhecimento externo da estratégia.",
     },
   ],

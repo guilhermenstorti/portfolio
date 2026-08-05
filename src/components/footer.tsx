@@ -17,7 +17,7 @@ export const Footer = () => (
       ))}
     </nav>
     <p className="mt-6 text-sm text-dim">
-      © 2025 Guilherme Storti. Feito com café e obsessão por produto.
+      © 2026 Guilherme Storti. Feito com café e obsessão por produto.
     </p>
   </footer>
 );

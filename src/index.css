@@ -161,6 +161,22 @@ body {
   pointer-events: none;
 }
 
+@keyframes avatar-ring-liquid-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.avatar-ring-liquid {
+  background: linear-gradient(115deg, var(--accent), var(--warn), var(--accent));
+  background-size: 300% 300%;
+  animation: avatar-ring-liquid-flow 8s ease-in-out infinite;
+}
+
 .logo-marquee-fade {
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(
@@ -179,7 +195,8 @@ body {
   .chevrons-up-top,
   .chevrons-up-bottom,
   .header-cta-attention,
-  .shine-cta::after {
+  .shine-cta::after,
+  .avatar-ring-liquid {
     animation: none;
   }
 }

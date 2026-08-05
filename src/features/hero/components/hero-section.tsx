@@ -1,14 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { AnchorScrollLink } from "@/components/ui/anchor-scroll-link";
 import { getButtonClassName } from "@/components/ui/button-styles";
-import { CalendarIcon } from "@/components/ui/icons";
+import { CalendarIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 import { CONTACT_LINKS } from "@/lib/contact-links";
 import { QuickInfoBar } from "@/features/hero/components/quick-info-bar";
 
 export const HeroSection = () => (
   <section className="px-12 py-24 text-center">
     <div className="mx-auto max-w-3xl">
-      <p className="text-sm text-faint">
+      <div className="avatar-ring-liquid relative mx-auto h-[123px] w-[123px] rounded-full border-[3px] border-transparent">
+        <img
+          src="/portfolio/assets/img/logos/gns.png"
+          alt="Guilherme Storti"
+          className="absolute inset-0 h-full w-full rounded-full object-cover"
+        />
+      </div>
+      <p className="mt-6 text-sm text-faint">
         Você provavelmente está com 14 abas abertas agora.
         <br />
         Se essa for a última que você precisar abrir, fiz meu trabalho.
@@ -39,6 +46,22 @@ export const HeroSection = () => (
         />
       </div>
       <QuickInfoBar />
+      <div className="mt-6 flex flex-wrap justify-center gap-4">
+        <Button
+          href={CONTACT_LINKS.linkedin}
+          label="LinkedIn"
+          icon={<LinkedinIcon className="h-4 w-4" />}
+          variant="secondary"
+          target="_blank"
+        />
+        <Button
+          href={CONTACT_LINKS.github}
+          label="GitHub"
+          icon={<GithubIcon className="h-4 w-4" />}
+          variant="secondary"
+          target="_blank"
+        />
+      </div>
     </div>
   </section>
 );

@@ -42,6 +42,13 @@ const EDUCATION_MILESTONES: readonly EducationMilestone[] = [
     institution: "Massachusetts Institute of Technology",
     logoSlug: "mit",
   },
+  {
+    year: "2026",
+    title: "Inteligência Artificial para Desenvolvimento",
+    degreeType: "Certificação",
+    institution: "branas.io",
+    logoSlug: "branas",
+  },
 ];
 
 export const EducationTimeline = () => (

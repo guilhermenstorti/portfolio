@@ -79,6 +79,10 @@ export const MOGNO_AI_DATA: CaseStudyData = {
       lead: "Cultura de experimentação implantada.",
       text: "Fail fast virou prática do time, não só discurso.",
     },
+    {
+      lead: "54% de taxa de ativação de usuários.",
+      text: "Uma boa entrada de mercado.",
+    },
   ],
   learnings: [
     {

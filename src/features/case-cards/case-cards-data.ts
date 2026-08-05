@@ -3,7 +3,7 @@ import type { CaseCardData } from "@/features/case-cards/types";
 export const CASE_CARDS: readonly CaseCardData[] = [
   {
     badgeLabel: "AI & Plataforma",
-    title: "Mogno AI — Do Zero ao Lançamento Global",
+    title: "Mogno AI: Do Zero ao Lançamento Global",
     subtitle: "PM Senior · Out 2025 – Jul 2026",
     description:
       "Liderei a concepção de um produto de plataforma com IA embarcada, transformando uma iniciativa interna em produto global, acelerado pelo Google for Startups. Naveguei incerteza técnica com fail fast e estruturei métricas desde o dia 1.",
@@ -31,7 +31,7 @@ export const CASE_CARDS: readonly CaseCardData[] = [
   },
   {
     badgeLabel: "Dados & Fundação",
-    title: "Euphoria — Quando BI Vira Função Estratégica",
+    title: "Euphoria: Quando BI Vira Função Estratégica",
     subtitle: "BI Analyst · Abr 2019 – Dez 2020",
     description:
       "Área de dados fragmentada em uma holding com 10+ empresas. Estruturei BI como função central: Data Warehouse, ETL, dashboards e cultura de dados. Impacto financeiro direto durante a pandemia.",

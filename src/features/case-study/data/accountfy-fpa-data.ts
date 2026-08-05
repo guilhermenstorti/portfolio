@@ -4,7 +4,7 @@ export const ACCOUNTFY_FPA_DATA: CaseStudyData = {
   seoTitle: "Case: Accountfy FP&A — Redesign e Retenção | Guilherme Storti",
   badgeEmoji: "🎯",
   badgeLabel: "Estratégia & Retenção",
-  title: "Accountfy — FP&A",
+  title: "Accountfy: FP&A",
   subtitle:
     "Produto com churn alto, ofuscado pelo carro-chefe da empresa. Conduzi um redesign completo que não só salvou a retenção, mas transformou o produto em peça central do portfólio.",
   heroGradientFrom: "#10b981",
@@ -16,7 +16,7 @@ export const ACCOUNTFY_FPA_DATA: CaseStudyData = {
     status: "Resultados consolidados",
   },
   contextParagraphs: [
-    "A squad de FP&A era responsável pelo produto de planejamento orçamentário da Accountfy — fintech SaaS B2B investida pela Redpoint Eventures, com 350+ clientes em 11 países. Era um produto robusto, mas que vivia na sombra do carro-chefe: controladoria e fechamento contábil.",
+    "A squad de FP&A era responsável pelo produto de planejamento orçamentário da Accountfy, fintech SaaS B2B investida pela Redpoint Eventures, com 350+ clientes em 11 países. Era um produto robusto, mas que vivia na sombra do carro-chefe: controladoria e fechamento contábil.",
     'O produto de orçamento era visto como "complementar". UX defasada, churn crescente, e a percepção de que era "mais um" na categoria.',
     "Entrei como Junior PO e evoluí ao longo de quase 3 anos. Isso me deu uma visão longitudinal rara.",
   ],
@@ -36,7 +36,7 @@ export const ACCOUNTFY_FPA_DATA: CaseStudyData = {
     {
       subheading: "Entender antes de agir",
       paragraphs: [
-        "Conversei extensivamente com clientes que deram churn, não com os que ficaram. Os que saíram contaram o que eu precisava saber: a curva de aprendizado era íngreme demais. Quem sobrevivia aos primeiros 60 dias ficava. O problema não era o produto. Era a entrada no produto.",
+        "Conversei extensivamente com clientes que deram churn, não com os que ficaram. Os que saíram contaram o que eu precisava saber: a curva de aprendizado era íngreme demais. Quem sobrevivia aos primeiros 90 dias ficava. O problema não era o produto. Era a entrada no produto, com alguns casos mais críticos chegando a 6 meses de onboarding.",
       ],
     },
     {
@@ -70,7 +70,7 @@ export const ACCOUNTFY_FPA_DATA: CaseStudyData = {
     },
     {
       title: "2. Onboarding é produto, não suporte.",
-      text: "Quando o onboarding depende de uma pessoa do CS passar horas com cada cliente, não é onboarding, é consultoria disfarçada.",
+      text: "Quando o onboarding depende de uma pessoa do CS passar horas, dias ou até meses com cada cliente, não é onboarding, é consultoria disfarçada.",
     },
     {
       title: "3. Um bom produto muda sua própria percepção.",

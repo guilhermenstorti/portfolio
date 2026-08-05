@@ -42,6 +42,7 @@ const EXPERTISE_CATEGORIES: readonly ExpertiseCategory[] = [
       "Continuous Discovery",
       "Experimentação",
       "Double Diamond",
+      "A/B Testing",
     ],
   },
   {
