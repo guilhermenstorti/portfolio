@@ -6,15 +6,20 @@ import { CalendarIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 import { Toast } from "@/components/ui/toast";
 import { CONTACT_LINKS } from "@/lib/contact-links";
 import { useToast } from "@/hooks/use-toast";
+import { useSectionTracking } from "@/hooks/use-section-tracking";
+import { trackCtaClicked } from "@/lib/analytics";
 import { QuickInfoBar } from "@/features/hero/components/quick-info-bar";
 import { ProfileAvatar } from "@/features/hero/components/profile-avatar";
+
+const CTA_LOCATION = "hero";
 
 export const HeroSection = () => {
   const { t } = useTranslation('hero');
   const { message, isVisible, showToast, hideToast } = useToast();
+  const sectionRef = useSectionTracking<HTMLElement>("hero");
 
   return (
-    <section className="px-12 py-24 text-center">
+    <section ref={sectionRef} className="px-12 py-24 text-center">
       <div className="mx-auto max-w-3xl">
         <ProfileAvatar
           src="/portfolio/assets/img/logos/gns.png"
@@ -39,11 +44,13 @@ export const HeroSection = () => {
             variant="primary"
             target="_blank"
             className="shine-cta relative overflow-hidden"
+            onClick={() => trackCtaClicked({ ctaType: "schedule", ctaLocation: CTA_LOCATION })}
           />
           <AnchorScrollLink
             targetId="cases"
             label={t('seeCases')}
             className={getButtonClassName("secondary")}
+            onClick={() => trackCtaClicked({ ctaType: "cases_anchor" })}
           />
         </div>
         <QuickInfoBar />
@@ -54,6 +61,7 @@ export const HeroSection = () => {
             icon={<LinkedinIcon className="h-4 w-4" />}
             variant="secondary"
             target="_blank"
+            onClick={() => trackCtaClicked({ ctaType: "linkedin", ctaLocation: CTA_LOCATION })}
           />
           <Button
             href={CONTACT_LINKS.github}
@@ -61,6 +69,7 @@ export const HeroSection = () => {
             icon={<GithubIcon className="h-4 w-4" />}
             variant="secondary"
             target="_blank"
+            onClick={() => trackCtaClicked({ ctaType: "github", ctaLocation: CTA_LOCATION })}
           />
         </div>
       </div>

@@ -1,13 +1,14 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 
 interface CtaSectionProps {
   readonly title: string;
   readonly text: string;
   readonly children: ReactNode;
+  readonly sectionRef?: Ref<HTMLElement>;
 }
 
-export const CtaSection = ({ title, text, children }: CtaSectionProps) => (
-  <section className="px-12 py-16 text-center">
+export const CtaSection = ({ title, text, children, sectionRef }: CtaSectionProps) => (
+  <section ref={sectionRef} className="px-12 py-16 text-center">
     <div className="mx-auto max-w-content rounded-card bg-contrast px-6 py-16">
       <h2 className="text-3xl text-contrast-foreground">{title}</h2>
       <p className="mx-auto mt-4 max-w-xl text-contrast-muted">{text}</p>

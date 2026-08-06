@@ -3,6 +3,7 @@ import { QuickScanField } from "@/features/quick-scan/components/quick-scan-fiel
 import { QuickScanActions } from "@/features/quick-scan/components/quick-scan-actions";
 import { StatPanel } from "@/components/ui/stat-panel";
 import { ChevronsUpIcon, LaunchingRocketIcon } from "@/components/ui/icons";
+import { useSectionTracking } from "@/hooks/use-section-tracking";
 
 interface TextField {
   readonly label: string;
@@ -19,6 +20,7 @@ const withTrend = (value: string) => (
 
 export const QuickScanSection = () => {
   const { t } = useTranslation('quickScan');
+  const sectionRef = useSectionTracking<HTMLElement>("quickscan");
 
   const TEXT_FIELDS: readonly TextField[] = [
     {
@@ -62,7 +64,7 @@ export const QuickScanSection = () => {
   ];
 
   return (
-    <section className="px-12 py-16">
+    <section ref={sectionRef} className="px-12 py-16">
       <div className="mx-auto max-w-content">
         <h2 className="text-3xl text-foreground">{t('title')}</h2>
         <p className="mt-4 max-w-[900px] text-muted">

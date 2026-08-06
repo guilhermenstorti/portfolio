@@ -2,6 +2,14 @@ import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import { CalendarIcon, DownloadIcon, LinkedinIcon, MailIcon } from "@/components/ui/icons";
 import { CONTACT_LINKS, MAILTO_EMAIL_LINK, getCvLink } from "@/lib/contact-links";
+import { trackCtaClicked, trackQuickScanActionClicked } from "@/lib/analytics";
+
+const CTA_LOCATION = "quick_scan";
+
+const trackQuickScanCta = (ctaType: "schedule" | "email" | "linkedin" | "cv_download", action: "schedule" | "cv_download" | "linkedin" | "email"): void => {
+  trackCtaClicked({ ctaType, ctaLocation: CTA_LOCATION });
+  trackQuickScanActionClicked(action);
+};
 
 export const QuickScanActions = () => {
   const { t } = useTranslation('quickScan');
@@ -17,6 +25,7 @@ export const QuickScanActions = () => {
         variant="primary"
         target="_blank"
         className="shine-cta relative overflow-hidden"
+        onClick={() => trackQuickScanCta("schedule", "schedule")}
       />
       <Button
         href={cvLink}
@@ -24,6 +33,7 @@ export const QuickScanActions = () => {
         icon={<DownloadIcon className="h-4 w-4" />}
         variant="secondary"
         target="_blank"
+        onClick={() => trackQuickScanCta("cv_download", "cv_download")}
       />
       <Button
         href={CONTACT_LINKS.linkedin}
@@ -31,12 +41,14 @@ export const QuickScanActions = () => {
         icon={<LinkedinIcon className="h-4 w-4" />}
         variant="secondary"
         target="_blank"
+        onClick={() => trackQuickScanCta("linkedin", "linkedin")}
       />
       <Button
         href={MAILTO_EMAIL_LINK}
         label={t('directEmail', { defaultValue: 'Direct email' })}
         icon={<MailIcon className="h-4 w-4" />}
         variant="secondary"
+        onClick={() => trackQuickScanCta("email", "email")}
       />
     </div>
   );

@@ -1,5 +1,6 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { ScrollToTop } from "@/app/scroll-to-top";
+import { AnalyticsTracker } from "@/app/analytics-tracker";
 import { HomePage } from "@/pages/home-page";
 import { MognoAiCasePage } from "@/pages/mogno-ai-case-page";
 import { AccountfyAiAnalyticsCasePage } from "@/pages/accountfy-ai-analytics-case-page";
@@ -10,6 +11,7 @@ import { NotFoundPage } from "@/pages/not-found-page";
 export const AppRouter = () => (
   <HashRouter>
     <ScrollToTop />
+    <AnalyticsTracker />
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/cases/mogno-ai" element={<MognoAiCasePage />} />

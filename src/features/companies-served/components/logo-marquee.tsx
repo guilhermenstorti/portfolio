@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { trackCompanyLogoHovered } from "@/lib/analytics";
 
 interface CompanyLogo {
   readonly name: string;
@@ -19,6 +20,20 @@ export const LogoMarquee = ({ logos }: LogoMarqueeProps) => {
   const distanceRef = useRef(0);
   const positionRef = useRef(0);
   const isPausedRef = useRef(false);
+  const hoverStartRef = useRef<Record<string, number>>({});
+
+  const handleLogoHoverStart = (slug: string) => {
+    hoverStartRef.current[slug] = Date.now();
+  };
+
+  const handleLogoHoverEnd = (logo: CompanyLogo) => {
+    const startedAt = hoverStartRef.current[logo.slug];
+    if (!startedAt) {
+      return;
+    }
+    delete hoverStartRef.current[logo.slug];
+    trackCompanyLogoHovered({ companyName: logo.name, hoverDurationMs: Date.now() - startedAt });
+  };
 
   useEffect(() => {
     const setElement = setRef.current;
@@ -81,6 +96,8 @@ export const LogoMarquee = ({ logos }: LogoMarqueeProps) => {
               src={`/portfolio/assets/img/logos/${logo.slug}.png`}
               alt={logo.name}
               className={LOGO_IMAGE_CLASSES}
+              onMouseEnter={() => handleLogoHoverStart(logo.slug)}
+              onMouseLeave={() => handleLogoHoverEnd(logo)}
             />
           ))}
         </div>

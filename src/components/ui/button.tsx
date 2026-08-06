@@ -10,6 +10,7 @@ interface ButtonProps {
   readonly target?: "_self" | "_blank";
   readonly icon?: ReactNode;
   readonly className?: string;
+  readonly onClick?: () => void;
 }
 
 export const Button = ({
@@ -20,12 +21,14 @@ export const Button = ({
   target = "_self",
   icon,
   className,
+  onClick,
 }: ButtonProps) => (
   <a
     href={href}
     target={target}
     rel={target === "_blank" ? "noreferrer" : undefined}
     className={cn(getButtonClassName(variant, size), className)}
+    onClick={onClick}
   >
     {icon}
     {label}

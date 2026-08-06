@@ -3,13 +3,23 @@ import { Badge } from "@/components/ui/badge";
 import { ResultHighlight } from "@/components/ui/result-highlight";
 import { RouteButton } from "@/components/ui/route-button";
 import type { CaseCardData } from "@/features/case-cards/types";
+import { getCaseNameFromPath } from "@/lib/analytics/page-name";
+import { trackCaseCardClicked } from "@/lib/analytics";
 
 interface CaseCardProps {
   readonly data: CaseCardData;
+  readonly position: number;
 }
 
-export const CaseCard = ({ data }: CaseCardProps) => {
+export const CaseCard = ({ data, position }: CaseCardProps) => {
   const { t } = useTranslation('caseCards');
+
+  const handleReadFullCaseClick = () => {
+    const caseName = getCaseNameFromPath(data.linkTo);
+    if (caseName) {
+      trackCaseCardClicked({ caseName, cardPosition: position });
+    }
+  };
 
   return (
     <article className="case-card flex flex-col gap-4 rounded-card border border-border bg-card p-7">
@@ -19,7 +29,12 @@ export const CaseCard = ({ data }: CaseCardProps) => {
       <p className="text-muted">{t(data.descriptionKey)}</p>
       <ResultHighlight label={t('resultLabel')} value={t(data.resultKey)} />
       <div className="mt-auto">
-        <RouteButton to={data.linkTo} label={t('readFullCase')} variant="secondary" />
+        <RouteButton
+          to={data.linkTo}
+          label={t('readFullCase')}
+          variant="secondary"
+          onClick={handleReadFullCaseClick}
+        />
       </div>
     </article>
   );

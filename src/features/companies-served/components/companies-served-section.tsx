@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { LogoMarquee } from "@/features/companies-served/components/logo-marquee";
+import { useSectionTracking } from "@/hooks/use-section-tracking";
 
 interface CompanyLogo {
   readonly name: string;
@@ -23,9 +24,10 @@ const COMPANY_LOGOS: readonly CompanyLogo[] = [
 
 export const CompaniesServedSection = () => {
   const { t } = useTranslation('companiesServed');
+  const sectionRef = useSectionTracking<HTMLElement>("companies");
 
   return (
-    <section className="px-12 py-16">
+    <section ref={sectionRef} className="px-12 py-16">
       <div className="mx-auto max-w-content text-center">
         <h2 className="text-3xl text-foreground">
           {t('title')}
