@@ -14,7 +14,7 @@ export const AboutSection = () => {
       <div className="mx-auto max-w-[700px]">
         <h2 className="text-3xl text-foreground">{t('title')}</h2>
         <div className="mt-6 space-y-4 text-muted">
-          {t('paragraphs', { returnObjects: true }).map((paragraph: string) => (
+          {(t('paragraphs', { returnObjects: true }) as string[]).map((paragraph: string) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
